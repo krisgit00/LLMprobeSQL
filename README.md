@@ -8,19 +8,6 @@
 
 ## 1. What we built
 
-```mermaid
-flowchart LR
-    A[English question<br/>'how many staff have pay above 4 2 0 0'] --> B[Tiny transformer<br/>4 layers, trained here]
-    B --> C[SQL<br/>SELECT COUNT ( * ) FROM employees<br/>WHERE salary > 4 2 0 0]
-    C --> D{Run on SQLite<br/>vs. correct SQL}
-    D --> E[Label: right / wrong]
-    B -. read every layer .-> F[Probes<br/>'will this be wrong?'<br/>'what is it planning?']
-    E --> F
-    C -. token probabilities .-> G[Output confidence]
-    E --> G
-    F --> H[Compare: which signal<br/>catches mistakes best?]
-    G --> H
-```
 
 - **Data:** synthetic text-to-SQL over 3 tables (employees, orders, products). Every test question is tagged by difficulty:
 
